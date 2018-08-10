@@ -1,0 +1,39 @@
+﻿<UserControl x:Class="Vision.View.ImagePanel.ImagePanel"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:Vision.View.ImagePanel"
+             mc:Ignorable="d" 
+             d:DesignHeight="600" d:DesignWidth="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" Orientation="Horizontal">
+            <local:ResizePanel Grid.Row="0" x:Name="resizePanel"/>            
+        </StackPanel>         
+        <WindowsFormsHost Grid.Row="1">
+            <local:ImagePanel_winform  x:Name="WF_ImagePanel" x:FieldModifier="public"/>
+        </WindowsFormsHost>
+        <Grid Grid.Row="2">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Label Content="X" Grid.Column="0" Margin="5"/>
+            <Label Content="Y"  Grid.Column="2" Margin="5"/>
+            <TextBox Grid.Column="1" Width="50" HorizontalAlignment="Left" Margin="5"
+                     Text="{Binding PixelX, Mode=OneWay}"/>
+            <TextBox Grid.Column="3" Width="50" HorizontalAlignment="Left" Margin="5"
+                     Text="{Binding PixelY, Mode=OneWay}"/> 
+        </Grid>
+    </Grid>
+</UserControl>
