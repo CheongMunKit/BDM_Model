@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Reflection;
 using BDMVision.Model.MapFile;
 using System.Linq;
+using BDMVision.Model.Enum;
 
 namespace BDMVision.Model.MapFileReader
 {
@@ -55,7 +56,6 @@ namespace BDMVision.Model.MapFileReader
             return false;
         }
 
-
         public static List<List<string>> GetMapsCode(List<List<BDMMapFromFile>> BDMMapFromFileListofList)
         {
             List<List<string>> BDMMapCodeListofList = new List<List<string>>();
@@ -72,50 +72,85 @@ namespace BDMVision.Model.MapFileReader
             return BDMMapCodeListofList;
         }
 
-        public static List<string> Rearrange(List<string> unknownDieTypes)
+        public static List<string> Rearrange(List<string> unknownDieTypes, MapFileFormat format)
         {
-            List<int> IntDieTypes = new List<int>();
-            List<string> nonIntDieTypes = new List<string>();
-            foreach (string dieType in unknownDieTypes)
+            if (format == MapFileFormat.ASE)
             {
-                int temp;
-                if (int.TryParse(dieType, out temp))
+                List<int> IntDieTypes = new List<int>();
+                List<string> nonIntDieTypes = new List<string>();
+                foreach (string dieType in unknownDieTypes)
                 {
-                    IntDieTypes.Add(temp);
+                    int temp;
+                    if (int.TryParse(dieType, out temp))
+                    {
+                        IntDieTypes.Add(temp);
+                    }
+                    else
+                    {
+                        nonIntDieTypes.Add(dieType);
+                    }
                 }
-                else
+                var IntDieTypes_Ascending = IntDieTypes.OrderBy(i => i);
+                List<string> RearrangedIntStrTypes = new List<string>();
+
+                foreach (int type in IntDieTypes_Ascending)
                 {
-                    nonIntDieTypes.Add(dieType);
+                    string temp;
+
+                    // If after parse the die has 2 digits
+                    if (Math.Floor(Math.Log10(type) + 1) == 2)
+                    {
+                        temp = "0" + type.ToString();
+                    }
+                    else if (Math.Floor(Math.Log10(type) + 1) == 1)
+                    {
+                        temp = "0" + "0" + type.ToString();
+                    }
+
+                    else
+                    {
+                        temp = type.ToString();
+                    }
+                    RearrangedIntStrTypes.Add(temp);
                 }
+
+                List<string> RearrangedTypes_Combined = new List<string>();
+                RearrangedTypes_Combined.AddRange(nonIntDieTypes);
+                RearrangedTypes_Combined.AddRange(RearrangedIntStrTypes);
+                return RearrangedTypes_Combined;
             }
-            var IntDieTypes_Ascending = IntDieTypes.OrderBy(i => i);
-            List<string> RearrangedIntStrTypes = new List<string>();
 
-            foreach (int type in IntDieTypes_Ascending)
+            else
             {
-                string temp;
-
-                // If after parse the die has 2 digits
-                if (Math.Floor(Math.Log10(type) + 1) == 2)
+                List<int> IntDieTypes = new List<int>();
+                List<string> nonIntDieTypes = new List<string>();
+                foreach (string dieType in unknownDieTypes)
                 {
-                    temp = "0" + type.ToString();
+                    int temp;
+                    if (int.TryParse(dieType, out temp))
+                    {
+                        IntDieTypes.Add(temp);
+                    }
+                    else
+                    {
+                        nonIntDieTypes.Add(dieType);
+                    }
                 }
-                else if (Math.Floor(Math.Log10(type) + 1) == 1)
-                {
-                    temp = "0" + "0" + type.ToString();
-                }
+                var IntDieTypes_Ascending = IntDieTypes.OrderBy(i => i);
+                List<string> RearrangedIntStrTypes = new List<string>();
 
-                else
+                foreach (int type in IntDieTypes_Ascending)
                 {
+                    string temp;
                     temp = type.ToString();
+                    RearrangedIntStrTypes.Add(temp);
                 }
-                RearrangedIntStrTypes.Add(temp);
-            }
 
-            List<string> RearrangedTypes_Combined = new List<string>();
-            RearrangedTypes_Combined.AddRange(nonIntDieTypes);
-            RearrangedTypes_Combined.AddRange(RearrangedIntStrTypes);
-            return RearrangedTypes_Combined;
+                List<string> RearrangedTypes_Combined = new List<string>();
+                RearrangedTypes_Combined.AddRange(nonIntDieTypes);
+                RearrangedTypes_Combined.AddRange(RearrangedIntStrTypes);
+                return RearrangedTypes_Combined;
+            }            
         }
     }
 }
