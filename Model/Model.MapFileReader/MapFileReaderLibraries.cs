@@ -536,6 +536,9 @@ namespace BDMVision.Model.MapFile
                 MapsFromFile = mapListofList,
                 WaferOrientation = waferOrientation,
                 UnknownDiesType = unknownDieTypes_Rearranged,
+                GoodDiesType = goodDieTypes_Rearranged,
+                BadDiesType = badDieTypes_Rearranged,
+                IgnoreDiesType = ignoreDieTypes_Rearranged,
                 GoodDieCount = goodDieCount,
                 BadDieCount = badDieCount,
                 IgnoreDieCount = ignoreDieCount,
@@ -643,7 +646,7 @@ namespace BDMVision.Model.MapFile
             string wafer = "";
 
             // Get Wafer ID
-            string wafer_ID = "";
+            string wafer_ID = GetInfo_CIS_B_Method(AllLines, 1, "mat_id");
 
             // Get Flat Notch Orientation
             int waferOrientation = int.Parse((GetInfo_CIS_B_Method(AllLines, 5, "notch_loc=")));
@@ -735,6 +738,9 @@ namespace BDMVision.Model.MapFile
                 MapsFromFile = mapListofList,
                 WaferOrientation = waferOrientation,
                 UnknownDiesType = unknownDieTypes_Rearranged,
+                GoodDiesType = goodDieTypes_Rearranged,
+                BadDiesType = badDieTypes_Rearranged,
+                IgnoreDiesType = ignoreDieTypes_Rearranged,
                 GoodDieCount = goodDieCount,
                 BadDieCount = badDieCount,
                 IgnoreDieCount = ignoreDieCount,
