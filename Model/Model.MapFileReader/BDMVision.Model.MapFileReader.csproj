@@ -70,6 +70,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLL reference\Extra\BDMVision.Model.Enum.dll</HintPath>
     </Reference>
+    <Reference Include="BDMVision.Model.Log">
+      <HintPath>..\..\DLL reference\Extra\BDMVision.Model.Log.dll</HintPath>
+    </Reference>
     <Reference Include="BDMVision.Model.MapFile, Version=1.0.0.0, Culture=neutral, processorArchitecture=AMD64">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\DLL reference\Extra\BDMVision.Model.MapFile.dll</HintPath>
@@ -83,6 +86,9 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Xml" />
+    <Reference Include="WaftechLibraries">
+      <HintPath>..\..\DLL reference\Extra\WaftechLibraries.dll</HintPath>
+    </Reference>
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>

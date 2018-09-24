@@ -4,6 +4,7 @@ using System.Reflection;
 using BDMVision.Model.MapFile;
 using System.Linq;
 using BDMVision.Model.Enum;
+using BDMVision.Model.Log;
 
 namespace BDMVision.Model.MapFileReader
 {
@@ -151,6 +152,23 @@ namespace BDMVision.Model.MapFileReader
                 RearrangedTypes_Combined.AddRange(RearrangedIntStrTypes);
                 return RearrangedTypes_Combined;
             }            
+        }
+
+        public static string GetMapFileWithExtension(
+            List<string> extensions, 
+            string mapFileWithoutExtension)
+        {
+            foreach(string ext in extensions)
+            {
+                string fullmapFile = mapFileWithoutExtension + ext;
+                if (System.IO.File.Exists(fullmapFile))
+                {
+                    VisionLogger.Log(WaftechLibraries.Log.LogType.Log, "MapFileReaderHelper", fullmapFile + " exist");
+                    return fullmapFile;
+                }
+                else VisionLogger.Log(WaftechLibraries.Log.LogType.Log, "MapFileReaderHelper", fullmapFile + " does not exist");      
+            }
+            throw new Exception("Map File does not exist");
         }
     }
 }
