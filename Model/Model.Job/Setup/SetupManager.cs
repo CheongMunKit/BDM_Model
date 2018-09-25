@@ -79,7 +79,7 @@ namespace BDMVision.Model.Job
                 BDMVisionMasterRecipe.EROIforMatchingParameters,
                 BDMVisionMasterRecipe.PatternMatcherParameters,
                 BDMVisionMasterConfig.MapColorCodeParameters,
-                BDMVisionMasterConfig.BDMMapResultConfig,
+                BDMVisionMasterRecipe.BDMMapResultConfig,
                 BDMVisionMasterRecipe.MapVisionParameters,
                 ImageStorage.ImageStorage.UpdateImages,
                 setSequencePassFail,

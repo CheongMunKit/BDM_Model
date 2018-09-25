@@ -156,9 +156,20 @@ namespace BDMVision.Model.MapFileReader
 
         public static string GetMapFileWithExtension(
             List<string> extensions, 
-            string mapFileWithoutExtension)
+            string mapFileWithoutExtension,
+            bool IsNoExtensionAllowed)
         {
-            foreach(string ext in extensions)
+            if (IsNoExtensionAllowed)
+            {
+                string fullmapFile = mapFileWithoutExtension;
+                if (System.IO.File.Exists(fullmapFile))
+                {
+                    VisionLogger.Log(WaftechLibraries.Log.LogType.Log, "MapFileReaderHelper", fullmapFile + " exist");
+                    return fullmapFile;
+                }
+            }
+
+            foreach (string ext in extensions)
             {
                 string fullmapFile = mapFileWithoutExtension + ext;
                 if (System.IO.File.Exists(fullmapFile))
