@@ -295,15 +295,17 @@ namespace BDMVision.Model.PatternMatching
             PatternMatcherParameters param
             )
         {
-            CheckPatternFilePath(existingRecipeName);
-            CheckPatternImageFilePath(existingRecipeName);
-
             var patternMatcher = CreateDoublePatternMatcher(param);
 
             string s1 = GetLeftPatternFilePath(existingRecipeName);
             string s2 = GetRightPatternFilePath(existingRecipeName);
             string s3 = GetLeftPatternImageFilePath(existingRecipeName);
             string s4 = GetRightPatternImageFilePath(existingRecipeName);
+
+            CheckPatternFilePath(s1);
+            CheckPatternFilePath(s2);
+            CheckPatternImageFilePath(s3);
+            CheckPatternImageFilePath(s4);
 
             patternMatcher.LoadPatterns(
                 s1,
