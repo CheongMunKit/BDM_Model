@@ -177,7 +177,7 @@ namespace BDMVision.Model.PatternMatching
             string pattern1_ImageFilePath,
             string pattern2_ImageFilePath)
         {
-            if (!isPatternReady) throw new Exception("Pattern Not Ready");                        
+            if (!isPatternReady) throw new Exception("Pattern Not Ready");                                   
             EMatcher1_.Save(pattern1_FilePath);
             EMatcher2_.Save(pattern2_FilePath);
             Pattern1.Save(pattern1_ImageFilePath);

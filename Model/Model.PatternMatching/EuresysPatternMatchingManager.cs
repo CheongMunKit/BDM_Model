@@ -318,6 +318,8 @@ namespace BDMVision.Model.PatternMatching
             s3 = GetLeftPatternImageFilePath(newRecipeName);
             s4 = GetRightPatternImageFilePath(newRecipeName);
 
+            if (!System.IO.Directory.Exists(s1)) Directory.CreateDirectory(Path.GetDirectoryName(s1));
+
             patternMatcher.SavePatterns(
                 s1,
                 s2,
