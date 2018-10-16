@@ -108,6 +108,9 @@
     <Reference Include="BDMVision.Model.MapFile">
       <HintPath>..\..\DLL reference\Extra\BDMVision.Model.MapFile.dll</HintPath>
     </Reference>
+    <Reference Include="BDMVision.Model.MapFileReader">
+      <HintPath>..\..\DLL reference\Extra\BDMVision.Model.MapFileReader.dll</HintPath>
+    </Reference>
     <Reference Include="BDMVision.Model.MapResult">
       <HintPath>..\..\DLL reference\Extra\BDMVision.Model.MapResult.dll</HintPath>
     </Reference>
@@ -200,10 +203,6 @@
     <ProjectReference Include="..\KeyDecoder\Model.Protection.csproj">
       <Project>{a9541bdf-f58b-4b5d-b264-640a9fe7428d}</Project>
       <Name>Model.Protection</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Model.MapFileReader\BDMVision.Model.MapFileReader.csproj">
-      <Project>{204667d9-a085-43e7-b821-38a2168664d8}</Project>
-      <Name>BDMVision.Model.MapFileReader</Name>
     </ProjectReference>
     <ProjectReference Include="..\Model.MapVisionReader\BDMVision.Model.MapVisionReader.csproj">
       <Project>{89e936f0-10dd-42c4-b629-a5d9e4dc6654}</Project>

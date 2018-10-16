@@ -171,6 +171,19 @@ namespace BDMVision.Model.PatternMatching
             isPatternReady = true;
         }
 
+        public void SavePatterns(
+            string pattern1_FilePath,
+            string pattern2_FilePath,
+            string pattern1_ImageFilePath,
+            string pattern2_ImageFilePath)
+        {
+            if (!isPatternReady) throw new Exception("Pattern Not Ready");                        
+            EMatcher1_.Save(pattern1_FilePath);
+            EMatcher2_.Save(pattern2_FilePath);
+            Pattern1.Save(pattern1_ImageFilePath);
+            Pattern2.Save(pattern2_ImageFilePath);
+        }
+
         //public void TeachAndSaveEMatcher(
         //    PatternMatcherParameters param,
         //    EROIBW8 patternforTeaching1,

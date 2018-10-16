@@ -289,6 +289,40 @@ namespace BDMVision.Model.PatternMatching
                 return false;
         }
 
+        public static void CopyPatterns(
+            string existingRecipeName, 
+            string newRecipeName,
+            PatternMatcherParameters param
+            )
+        {
+            CheckPatternFilePath(existingRecipeName);
+            CheckPatternImageFilePath(existingRecipeName);
+
+            var patternMatcher = CreateDoublePatternMatcher(param);
+
+            string s1 = GetLeftPatternFilePath(existingRecipeName);
+            string s2 = GetRightPatternFilePath(existingRecipeName);
+            string s3 = GetLeftPatternImageFilePath(existingRecipeName);
+            string s4 = GetRightPatternImageFilePath(existingRecipeName);
+
+            patternMatcher.LoadPatterns(
+                s1,
+                s2,
+                s3,
+                s4);
+
+            s1 = GetLeftPatternFilePath(newRecipeName);
+            s2 = GetRightPatternFilePath(newRecipeName);
+            s3 = GetLeftPatternImageFilePath(newRecipeName);
+            s4 = GetRightPatternImageFilePath(newRecipeName);
+
+            patternMatcher.SavePatterns(
+                s1,
+                s2,
+                s3,
+                s4);
+        }
+
         public static bool CheckTeacherROIOrientation(WaferOrientation patternOrientation, TeacherROIOrientaion teacherOrientation)
         {
             if (patternOrientation == WaferOrientation.Bottom ||
