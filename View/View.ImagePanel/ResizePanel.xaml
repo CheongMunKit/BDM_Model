@@ -36,8 +36,11 @@
                 <Button x:FieldModifier="public" Grid.Column="3" x:Name="btnFullSize" Margin="5"  Background="{StaticResource FullSize}"   MinHeight="30" MinWidth="30"
                         Click="btnFullSize_Click"/>
                 <ToggleButton x:FieldModifier="public" Grid.Column="4" x:Name="TogglebtnLockSize" Margin="5" Background="{StaticResource LockSize}" MinHeight="30" MinWidth="30"
-						      Checked="TogglebtnLockSize_Checked" Unchecked="TogglebtnLockSize_Unchecked"/>
-                <Button x:FieldModifier="public" Grid.Column="5" x:Name="btnSaveImage" Margin="5" Background="{StaticResource SaveImage}" MinHeight="30" MinWidth="30" Click="btnSaveImage_Click">
+						      Checked="TogglebtnLockSize_Checked" Unchecked="TogglebtnLockSize_Unchecked"
+                              Visibility="Collapsed"/>
+                <Button x:FieldModifier="public" Grid.Column="5" x:Name="btnSaveImage" Margin="5" Background="{StaticResource SaveImage}" MinHeight="30" MinWidth="30"
+                        Click="btnSaveImage_Click"
+                        Visibility="Collapsed">
                 </Button>
             </Grid>
         </Border>
@@ -45,7 +48,7 @@
             <Style TargetType="Grid">
                 <Style.Triggers>
                     <DataTrigger Binding="{Binding IsEnabled, ElementName=ResizeGrid}" Value="True">
-                        <Setter Property="Visibility" Value="Visible"/>
+                        <Setter Property="Visibility"   Value="Visible"/>
                     </DataTrigger>
                     <DataTrigger Binding="{Binding IsEnabled, ElementName=ResizeGrid}" Value="False">
                         <Setter Property="Visibility" Value="Collapsed"/>

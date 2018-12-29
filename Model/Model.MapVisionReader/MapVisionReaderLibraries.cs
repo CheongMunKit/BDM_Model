@@ -8,7 +8,7 @@ namespace BDMVision.Model.MapVisionReader
 {
     public class MapVisionReaderLibraries
     {
-        public static MapDataFromVision ReadImage (
+        public static MapDataFromVision ReadImage(
             MapVisionParameters recipe, 
             EImageBW8 eImage)
         {
@@ -67,7 +67,7 @@ namespace BDMVision.Model.MapVisionReader
                 MapsFromVision = MapFromVisionListofList,
             };
         }      
-
+        
         /// <summary>
         /// Average Pixel Value
         /// 0 if fully black
